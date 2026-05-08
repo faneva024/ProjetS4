@@ -25,3 +25,27 @@ $routes->group('admin', ['filter' => 'admin'], function($routes){
     );
 
 });
+
+$routes->post(
+    '/subscription/subscribe',
+    'SubscriptionController::subscribe'
+);
+
+$routes->get(
+    '/admin/sports',
+    'SportController::index',
+    ['filter' => 'admin']
+);
+
+$routes->post(
+    '/admin/sports/create',
+    'SportController::create',
+    ['filter' => 'admin']
+);
+
+$routes->get(
+    '/admin/sports/delete/(:num)',
+    'SportController::delete/$1',
+    ['filter' => 'admin']
+);
+

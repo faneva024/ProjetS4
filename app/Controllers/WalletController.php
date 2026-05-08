@@ -4,6 +4,7 @@ namespace App\Controllers;
 
 use App\Models\CodeModel;
 use App\Models\UserModel;
+use App\Models\RechargeHistoryModel;
 
 class WalletController extends BaseController
 {
@@ -13,6 +14,7 @@ class WalletController extends BaseController
 
         $codeModel = new CodeModel();
         $userModel = new UserModel();
+        $historyModel = new RechargeHistoryModel();
 
         $code = $codeModel
             ->where('code', $codeValue)
@@ -20,6 +22,7 @@ class WalletController extends BaseController
             ->first();
 
         if (!$code) {
+
             return $this->response->setJSON([
                 'success' => false,
                 'message' => 'Code invalide'
@@ -42,6 +45,12 @@ class WalletController extends BaseController
             'is_used' => 1,
             'used_by' => $userId,
             'used_at' => date('Y-m-d H:i:s')
+        ]);
+
+        $historyModel->save([
+            'user_id' => $userId,
+            'code_id' => $code['id'],
+            'montant' => $code['valeur']
         ]);
 
         return $this->response->setJSON([
