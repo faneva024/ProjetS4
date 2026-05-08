@@ -1,0 +1,95 @@
+﻿
+<link rel="stylesheet" href="css/idfit_inscription_sante.css">
+  <link rel="stylesheet" href="css/inline.css">
+<script src="js/idfit_app.js"></script>
+
+
+<div class="wrap">
+  <div class="prog-header">
+    <div class="prog-logo">IdFit</div>
+    <div class="prog-steps">
+      <div class="pstep">
+        <div class="pstep-num done"><i class="ti ti-check u-style-32" aria-hidden="true"></i></div>
+        <div class="pstep-label done">IdentitÃ©</div>
+      </div>
+      <div class="pstep-line done"></div>
+      <div class="pstep">
+        <div class="pstep-num active">2</div>
+        <div class="pstep-label active">SantÃ©</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">Vos informations de santÃ©</div>
+    <div class="card-sub">Ã‰tape 2 sur 2 â€” Ces donnÃ©es nous permettent de personnaliser votre programme</div>
+
+    <div class="layout">
+      <div class="form-col">
+        <div class="u-style-33">
+          <div class="field u-style-34">
+            <div class="flabel"><i class="ti ti-ruler-measure" aria-hidden="true"></i> Taille</div>
+            <div class="inp-wrap"><input class="inp ok" id="taille" value="175" oninput="calculateIMC()"><span class="unit">cm</span></div>
+          </div>
+          <div class="field u-style-34">
+            <div class="flabel"><i class="ti ti-weight" aria-hidden="true"></i> Poids actuel</div>
+            <div class="inp-wrap"><input class="inp ok" id="poids" value="88" oninput="calculateIMC()"><span class="unit">kg</span></div>
+          </div>
+          <div class="field u-style-34">
+            <div class="flabel"><i class="ti ti-cake" aria-hidden="true"></i> Ã‚ge</div>
+            <div class="inp-wrap"><input class="inp ok" value="22"><span class="unit">ans</span></div>
+          </div>
+        </div>
+
+        <div class="field">
+          <div class="flabel"><i class="ti ti-target" aria-hidden="true"></i> Mon objectif principal</div>
+          <div class="obj-list">
+            <div class="obj-item" data-objective="increase">
+              <div class="obj-radio"></div>
+              <div class="obj-ico u-style-29"><i class="ti ti-trending-up u-style-35" aria-hidden="true"></i></div>
+              <div><div class="obj-name">Augmenter mon poids</div><div class="obj-desc">Prise de masse musculaire et calorique</div></div>
+            </div>
+            <div class="obj-item on" data-objective="reduce">
+              <div class="obj-radio"></div>
+              <div class="obj-ico u-style-25"><i class="ti ti-trending-down u-style-36" aria-hidden="true"></i></div>
+              <div><div class="obj-name">RÃ©duire mon poids</div><div class="obj-desc">Perte de poids progressive et durable</div></div>
+            </div>
+            <div class="obj-item" data-objective="ideal">
+              <div class="obj-radio"></div>
+              <div class="obj-ico u-style-16"><i class="ti ti-focus u-style-5" aria-hidden="true"></i></div>
+              <div><div class="obj-name">Atteindre mon IMC idÃ©al</div><div class="obj-desc">Ã‰quilibrer poids et santÃ© globale</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="btn-row">
+          <button class="btn-sec">â† Retour</button>
+          <button class="btn-main" data-action="registerUser">CrÃ©er mon compte <i class="ti ti-arrow-right" aria-hidden="true"></i></button>
+        </div>
+      </div>
+
+      <div class="imc-col">
+        <div class="imc-box">
+          <div class="imc-val" id="imc-val">28.7</div>
+          <div class="imc-label">Votre IMC actuel</div>
+          <div class="imc-bar"><div class="imc-needle" id="imc-needle"></div></div>
+          <div class="imc-zones">
+            <span>Maigre</span><span>Normal</span><span>Surpoids</span><span>ObÃ¨se</span>
+          </div>
+          <div class="imc-status" id="imc-status"><i class="ti ti-alert-triangle u-style-1" aria-hidden="true"></i> Surpoids modÃ©rÃ©</div>
+        </div>
+        <div class="ideal-box">
+          <div class="ideal-label">Poids idÃ©al estimÃ©</div>
+          <div class="ideal-val" id="ideal-val">67.5 kg</div>
+          <div class="ideal-sub" id="ideal-diff">Ã€ perdre : 20.5 kg</div>
+          <div class="ideal-sub" id="target-date">Atteinte estimÃ©e : --</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="js/idfit_inscription_sante.js"></script>
+
+
+
