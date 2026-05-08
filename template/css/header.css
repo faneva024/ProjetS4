@@ -1,0 +1,275 @@
+﻿:root {
+      --p:#663266;
+      --p2:#7a3d7a;
+      --p3:#f0e4f0;
+      --acc:#A2A001;
+      --dark:#320E41;
+      --border:#e8e4ed;
+      --txt:#1a0a1e;
+      --txt2:#5a4a60;
+      --txt3:#8a7a90;
+      --bg:#f7f4fa;
+      --white:#fff;
+    }
+
+    * {
+      box-sizing:border-box;
+    }
+
+    body {
+      margin:0;
+      font-family:'Inter',sans-serif;
+      background:var(--bg);
+      color:var(--txt);
+    }
+
+    .user-header-wrap {
+      width:100%;
+      padding:18px 20px;
+      background:
+        radial-gradient(circle at 14% 0%, rgba(162,160,1,.12), transparent 30%),
+        linear-gradient(180deg, rgba(255,255,255,.95), rgba(255,255,255,.72));
+      border-bottom:1px solid rgba(232,228,237,.86);
+      position:sticky;
+      top:0;
+      z-index:50;
+      backdrop-filter:blur(18px);
+      -webkit-backdrop-filter:blur(18px);
+    }
+
+    .user-header {
+      max-width:1180px;
+      margin:0 auto;
+      min-height:66px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:22px;
+    }
+
+    .uh-brand {
+      display:flex;
+      align-items:center;
+      gap:12px;
+      min-width:max-content;
+      text-decoration:none;
+      color:var(--txt);
+    }
+
+    .uh-logo-mark {
+      height:44px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      flex-shrink:0;
+    }
+
+    .uh-logo-mark img {
+      width:auto;
+      height:44px;
+      display:block;
+      object-fit:contain;
+    }
+
+    .uh-logo-text {
+      display:flex;
+      flex-direction:column;
+      gap:2px;
+    }
+
+    .uh-name {
+      font-size:20px;
+      font-weight:800;
+      letter-spacing:0;
+      color:var(--dark);
+    }
+
+    .uh-status {
+      display:flex;
+      align-items:center;
+      gap:6px;
+      font-size:11px;
+      font-weight:700;
+      text-transform:uppercase;
+      letter-spacing:.08em;
+      color:var(--acc);
+    }
+
+    .uh-nav {
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:6px;
+      flex:1;
+    }
+
+    .uh-link {
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      min-height:40px;
+      padding:0 13px;
+      border-radius:8px;
+      color:var(--txt2);
+      text-decoration:none;
+      font-size:13px;
+      font-weight:700;
+      border:1px solid transparent;
+      transition:background .18s ease, color .18s ease, border-color .18s ease;
+      white-space:nowrap;
+    }
+
+    .uh-link i {
+      font-size:18px;
+    }
+
+    .uh-link:hover,
+    .uh-link.is-active {
+      background:var(--p3);
+      color:var(--p);
+      border-color:rgba(102,50,102,.08);
+    }
+
+    .uh-actions {
+      display:flex;
+      align-items:center;
+      gap:10px;
+      min-width:max-content;
+    }
+
+    .uh-wallet {
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      min-height:40px;
+      padding:0 12px;
+      border-radius:8px;
+      border:1px solid var(--border);
+      background:var(--white);
+      color:var(--dark);
+      font-size:13px;
+      font-weight:800;
+      text-decoration:none;
+      box-shadow:0 8px 18px rgba(50,14,65,.06);
+    }
+
+    .uh-gold {
+      color:var(--dark);
+      background:var(--acc);
+      border-color:rgba(162,160,1,.22);
+    }
+
+    .uh-profile {
+      display:flex;
+      align-items:center;
+      gap:10px;
+      min-height:44px;
+      padding:4px 5px 4px 11px;
+      border:1px solid var(--border);
+      border-radius:10px;
+      background:var(--white);
+    }
+
+    .uh-profile-copy {
+      text-align:right;
+      line-height:1.25;
+    }
+
+    .uh-profile-name {
+      font-size:12px;
+      font-weight:800;
+      color:var(--txt);
+    }
+
+    .uh-profile-role {
+      font-size:10px;
+      font-weight:700;
+      color:var(--txt3);
+    }
+
+    .uh-avatar {
+      width:34px;
+      height:34px;
+      border-radius:9px;
+      display:grid;
+      place-items:center;
+      background:var(--dark);
+      color:var(--white);
+      font-size:12px;
+      font-weight:800;
+    }
+
+    .uh-mobile-toggle {
+      display:none;
+    }
+
+    @media (max-width: 900px) {
+      .user-header {
+        flex-wrap:wrap;
+      }
+
+      .uh-nav {
+        order:3;
+        width:100%;
+        justify-content:flex-start;
+        overflow-x:auto;
+        padding-bottom:2px;
+      }
+
+      .uh-link {
+        flex:0 0 auto;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .user-header-wrap {
+        padding:12px;
+      }
+
+      .user-header {
+        gap:12px;
+      }
+
+      .uh-logo-mark {
+        height:38px;
+      }
+
+      .uh-logo-mark img {
+        height:38px;
+      }
+
+      .uh-name {
+        font-size:18px;
+      }
+
+      .uh-status,
+      .uh-profile-copy,
+      .uh-wallet span,
+      .uh-gold span {
+        display:none;
+      }
+
+      .uh-actions {
+        gap:7px;
+      }
+
+      .uh-wallet {
+        width:40px;
+        padding:0;
+        justify-content:center;
+      }
+
+      .uh-profile {
+        padding:4px;
+      }
+
+      .uh-nav {
+        gap:4px;
+      }
+
+      .uh-link {
+        padding:0 10px;
+        font-size:12px;
+      }
+    }
+
