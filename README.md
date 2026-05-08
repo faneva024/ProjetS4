@@ -59,3 +59,31 @@ Additionally, make sure that the following extensions are enabled in your PHP:
 - json (enabled by default - don't turn it off)
 - [mysqlnd](http://php.net/manual/en/mysqlnd.install.php) if you plan to use MySQL
 - [libcurl](http://php.net/manual/en/curl.requirements.php) if you plan to use the HTTP\CURLRequest library
+
+app/
+├── Config/
+│   ├── Routes.php          # Toutes nos routes API sécurisées
+│   └── Filters.php         # Déclaration de notre middleware Auth
+├── Filters/
+│   └── AuthFilter.php      # Middleware de protection de session
+├── Traits/
+│   └── ApiResponseTrait.php # Standardisation des retours JSON
+├── Services/
+│   ├── ImcService.php      # Logique métier IMC et Santé
+│   └── EstimationService.php # Calculs de durée et prévisions
+├── Models/
+│   ├── UserModel.php
+│   ├── RegimeModel.php
+│   ├── SportModel.php
+│   └── WeightHistoryModel.php
+├── Controllers/
+│   └── Api/
+│       ├── AuthController.php
+│       ├── ObjectiveController.php
+│       ├── SuggestionController.php
+│       ├── DashboardController.php
+│       ├── WeightController.php
+│       └── PdfController.php
+└── Views/
+    └── pdf/
+        └── rapport.php     # Template HTML pour DomPDF
