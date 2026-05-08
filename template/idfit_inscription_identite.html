@@ -1,0 +1,81 @@
+﻿
+<link rel="stylesheet" href="css/idfit_inscription_identite.css">
+  <link rel="stylesheet" href="css/inline.css">
+<script src="js/idfit_app.js"></script>
+
+
+<div class="wrap">
+  <div class="prog-header">
+    <div class="prog-logo">IdFit</div>
+    <div class="prog-steps">
+      <div class="pstep">
+        <div class="pstep-num active">1</div>
+        <div class="pstep-label active">IdentitÃ©</div>
+      </div>
+      <div class="pstep-line"></div>
+      <div class="pstep">
+        <div class="pstep-num idle">2</div>
+        <div class="pstep-label idle">SantÃ©</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="card-title">CrÃ©er votre compte</div>
+    <div class="card-sub">Ã‰tape 1 sur 2 â€” Informations personnelles</div>
+
+    <div class="hint-box">
+      <i class="ti ti-shield-check hint-ico" aria-hidden="true"></i>
+      <div class="hint-txt">Vos donnÃ©es sont protÃ©gÃ©es et ne seront jamais partagÃ©es avec des tiers.</div>
+    </div>
+
+    <div class="row2">
+      <div class="field">
+        <div class="flabel"><i class="ti ti-user" aria-hidden="true"></i> PrÃ©nom</div>
+        <input id="identity-first-name" class="inp ok" value="Finaritra">
+      </div>
+      <div class="field">
+        <div class="flabel"><i class="ti ti-user" aria-hidden="true"></i> Nom</div>
+        <input id="identity-last-name" class="inp ok" value="Rakoto">
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="flabel"><i class="ti ti-users" aria-hidden="true"></i> Genre</div>
+      <div class="genre-row">
+        <button class="genre-btn on"><i class="ti ti-gender-male" aria-hidden="true"></i> Homme</button>
+        <button class="genre-btn"><i class="ti ti-gender-female" aria-hidden="true"></i> Femme</button>
+        <button class="genre-btn"><i class="ti ti-gender-bigender" aria-hidden="true"></i> Autre</button>
+      </div>
+    </div>
+
+    <div class="field">
+      <div class="flabel"><i class="ti ti-mail" aria-hidden="true"></i> Email</div>
+      <input id="identity-email" class="inp err" type="email" value="finaritra@">
+      <div id="identity-email-status" class="err-msg"><i class="ti ti-alert-circle u-style-1" aria-hidden="true"></i> Adresse email invalide</div>
+    </div>
+
+    <div class="row2">
+      <div class="field">
+        <div class="flabel"><i class="ti ti-lock" aria-hidden="true"></i> Mot de passe</div>
+        <input id="identity-password" class="inp" type="password" value="Idfit2025@">
+        <div class="pw-bar">
+          <div class="ps on"></div><div class="ps on"></div><div class="ps on"></div><div class="ps"></div>
+        </div>
+        <div class="pw-label">Fort â€” encore 1 critÃ¨re pour TrÃ¨s fort</div>
+      </div>
+      <div class="field">
+        <div class="flabel"><i class="ti ti-lock-check" aria-hidden="true"></i> Confirmer mot de passe</div>
+        <input id="identity-confirm-password" class="inp ok" type="password" value="Idfit2025@">
+      </div>
+    </div>
+
+    <div class="btn-row">
+      <button class="btn-sec" data-prompt="Montre-moi la page connexion IdFit">Annuler</button>
+      <button class="btn-main" data-action="saveTempUser">Continuer <i class="ti ti-arrow-right" aria-hidden="true"></i></button>
+    </div>
+  </div>
+</div>
+
+
+
