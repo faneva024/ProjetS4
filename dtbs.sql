@@ -218,3 +218,24 @@ ON weight_history(user_id);
 
 CREATE INDEX idx_subscriptions_user
 ON subscriptions(user_id);
+
+CREATE TABLE recharge_history (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+
+    user_id INT NOT NULL,
+
+    code_id INT NOT NULL,
+
+    montant DECIMAL(10,2) NOT NULL,
+
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
+    FOREIGN KEY (user_id)
+        REFERENCES users(id)
+        ON DELETE CASCADE,
+
+    FOREIGN KEY (code_id)
+        REFERENCES codes(id)
+        ON DELETE CASCADE
+);
+
