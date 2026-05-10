@@ -1,0 +1,1 @@
+// Initialisation gérée par js/idfit_app.js
