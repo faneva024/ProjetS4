@@ -5,12 +5,20 @@ namespace App\Controllers;
 use App\Models\UserModel;
 use App\Models\PrixRegimeModel;
 use App\Models\SubscriptionModel;
+use App\Models\ConfigSystemModel;
 
 class SubscriptionController extends BaseController
 {
     public function subscribe()
     {
         $userId = session()->get('user_id');
+
+        if (!$userId) {
+            return $this->response->setStatusCode(401)->setJSON([
+                'success' => false,
+                'message' => 'Utilisateur non connecte'
+            ]);
+        }
 
         $regimeId =
             $this->request->getPost('regime_id');
@@ -27,6 +35,14 @@ class SubscriptionController extends BaseController
 
         $user =
             $userModel->find($userId);
+
+        if (!$user) {
+
+            return $this->response->setStatusCode(404)->setJSON([
+                'success' => false,
+                'message' => 'Utilisateur introuvable'
+            ]);
+        }
 
         $prixData =
             $prixModel
@@ -45,8 +61,8 @@ class SubscriptionController extends BaseController
         $prix = $prixData['prix'];
 
         if ($user['is_gold']) {
-
-            $prix = $prix * 0.85;
+            $discountPct = (float) (new ConfigSystemModel())->getValue('gold_discount', '15');
+            $prix = $prix * (1 - ($discountPct / 100));
         }
 
         if ($user['wallet_balance'] < $prix) {

@@ -13,9 +13,13 @@ class WeightController extends ResourceController
 
     public function addWeight()
     {
-        $poids = $this->request->getVar('poids');
+        $poids = (float) ($this->request->getVar('poids') ?? 0);
         $date = $this->request->getVar('date_mesure') ?? date('Y-m-d');
         $userId = session()->get('user_id');
+
+        if ($poids <= 0) {
+            return $this->sendError('Poids invalide');
+        }
 
         $model = new WeightHistoryModel();
         
@@ -26,6 +30,19 @@ class WeightController extends ResourceController
         }
         
         return $this->sendError($model->errors());
+    }
+
+    public function getHistory()
+    {
+        $userId = session()->get('user_id');
+        $history = (new WeightHistoryModel())
+            ->where('user_id', $userId)
+            ->orderBy('date_mesure', 'DESC')
+            ->findAll();
+
+        return $this->sendSuccess('Historique du poids', [
+            'history' => $history,
+        ]);
     }
 
     public function getChartData()

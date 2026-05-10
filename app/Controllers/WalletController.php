@@ -10,6 +10,15 @@ class WalletController extends BaseController
 {
     public function recharge()
     {
+        $userId = session()->get('user_id');
+
+        if (!$userId) {
+            return $this->response->setStatusCode(401)->setJSON([
+                'success' => false,
+                'message' => 'Utilisateur non connecte'
+            ]);
+        }
+
         $codeValue = $this->request->getPost('code');
 
         $codeModel = new CodeModel();
@@ -29,9 +38,14 @@ class WalletController extends BaseController
             ]);
         }
 
-        $userId = session()->get('user_id');
-
         $user = $userModel->find($userId);
+
+        if (!$user) {
+            return $this->response->setStatusCode(404)->setJSON([
+                'success' => false,
+                'message' => 'Utilisateur introuvable'
+            ]);
+        }
 
         $nouveauSolde =
             $user['wallet_balance']

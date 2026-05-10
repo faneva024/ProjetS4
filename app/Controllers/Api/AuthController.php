@@ -57,8 +57,22 @@ class AuthController extends ResourceController
 
         $userModel = new UserModel();
         $user = $userModel->where('email', $this->request->getVar('email'))->first();
+        $passwordInput = (string) $this->request->getVar('password');
 
-        if ($user && password_verify($this->request->getVar('password'), $user['password_hash'])) {
+        if ($user) {
+            $isPasswordValid = password_verify($passwordInput, $user['password_hash']);
+
+            // Compatibilite temporaire avec donnees de test en clair.
+            if (!$isPasswordValid && hash_equals((string) $user['password_hash'], $passwordInput)) {
+                $userModel->update($user['id'], ['password_hash' => $passwordInput]);
+                $user = $userModel->find($user['id']);
+                $isPasswordValid = true;
+            }
+
+            if (!$isPasswordValid) {
+                return $this->sendError("Identifiants invalides", 401);
+            }
+
             // Création de la session
             session()->set([
                 'user_id'      => $user['id'],

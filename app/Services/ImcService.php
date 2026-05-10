@@ -16,7 +16,7 @@ class ImcService
         if ($imc < 18.5) return 'maigreur';
         if ($imc <= 25) return 'normal';
         if ($imc <= 30) return 'surpoids';
-        return 'obésité';
+        return 'obesite';
     }
 
     public function calculateIdealWeight(float $tailleCm): float

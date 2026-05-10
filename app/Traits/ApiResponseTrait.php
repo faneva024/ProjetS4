@@ -13,11 +13,21 @@ trait ApiResponseTrait
         ]);
     }
 
-    protected function sendError(string $error, int $statusCode = 400)
+    protected function sendError(string|array $error, int $statusCode = 400)
     {
-        return $this->response->setStatusCode($statusCode)->setJSON([
+        $payload = [
             'success' => false,
-            'error'   => $error
+        ];
+
+        if (is_array($error)) {
+            $payload['error'] = 'Validation error';
+            $payload['errors'] = $error;
+        } else {
+            $payload['error'] = $error;
+        }
+
+        return $this->response->setStatusCode($statusCode)->setJSON([
+            ...$payload,
         ]);
     }
 }
